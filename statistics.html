@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>統計解析｜LPアトリエハマ</title>
+<meta name="description" content="LPアトリエハマの統計解析。売上データを分けている要因を統計の手法で特定し、まず動かす項目まで落とす分析。単発の分析は50,000円（税抜）の固定価格、伴走は月額のコンサルティング。">
+<meta name="theme-color" content="#1A2B4A">
+<link rel="canonical" href="https://lpatorie.com/statistics.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LPアトリエハマ">
+<meta property="og:title" content="統計解析｜LPアトリエハマ">
+<meta property="og:description" content="売上を分けている要因の特定と、まず動かす項目の提示。単発の分析は50,000円（税抜）の固定価格。">
+<meta property="og:url" content="https://lpatorie.com/statistics.html">
+<meta property="og:image" content="https://lpatorie.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1A2B4A; --navy2:#24365E; --orange:#E8820C; --orange-pale:#FDF2E6;
+  --pale:#F4F6FA; --pale-blue:#E4E9F5; --ink:#1F2430; --sub:#4A5A75; --line:#D8DCE3;
+  --card:#FFFFFF; --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--ink);background:#fff;line-height:1.75;font-size:16px}
+a{color:var(--navy);text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);z-index:50;backdrop-filter:blur(4px)}
+.head-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:900;font-size:20px;color:var(--navy);letter-spacing:.02em}
+.logo span{color:var(--orange)}
+nav.main{display:flex;gap:22px;font-size:14px;font-weight:500}
+nav.main a{color:var(--ink)}
+nav.main a:hover{color:var(--orange)}
+.head-cta{background:var(--orange);color:#fff !important;padding:10px 18px;border-radius:999px;font-weight:700}
+@media(max-width:820px){nav.main a:not(.head-cta){display:none}}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 70%,#2E4A77 100%);color:#fff;padding:72px 0 64px}
+.hero .kicker{display:inline-block;background:var(--orange);color:#fff;font-weight:700;font-size:13px;padding:4px 14px;border-radius:999px;margin-bottom:20px}
+.hero h1{font-size:clamp(28px,5vw,42px);font-weight:900;line-height:1.4;margin-bottom:18px}
+.hero p.lead{font-size:clamp(16px,2.4vw,19px);color:#DCE5F2;max-width:760px;margin-bottom:30px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 28px;border-radius:999px;font-weight:700;font-size:15px}
+.btn-orange{background:var(--orange);color:#fff}
+.btn-ghost{background:transparent;color:#fff;border:2px solid #fff}
+section{padding:72px 0}
+section.alt{background:var(--pale)}
+.sec-head{margin-bottom:36px}
+.sec-head .chip{display:inline-block;background:var(--pale-blue);color:var(--navy);font-weight:700;font-size:13px;padding:4px 14px;border-radius:999px;margin-bottom:12px}
+.sec-head h2{font-size:clamp(24px,3.6vw,32px);font-weight:900;color:var(--navy);line-height:1.45}
+.sec-head p{color:var(--sub);margin-top:10px;max-width:820px}
+.detail{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px;margin-bottom:28px}
+.detail h3{font-size:22px;font-weight:900;color:var(--navy);margin-bottom:6px}
+.detail .sub{color:var(--sub);margin-bottom:20px}
+.detail-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:820px){.detail-cols{grid-template-columns:1fr}}
+.detail h4{font-size:15px;font-weight:700;color:var(--navy);border-left:4px solid var(--orange);padding-left:10px;margin:18px 0 10px}
+.detail h4:first-child{margin-top:0}
+.detail ul{list-style:none}
+.detail li{padding-left:20px;position:relative;margin-bottom:6px;font-size:15px}
+.detail li::before{content:"";position:absolute;left:2px;top:11px;width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.detail p{font-size:15px}
+.fee{background:var(--pale);border-radius:10px;padding:16px 18px;font-size:15px}
+.fee b{color:var(--navy)}
+.sample-box{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.sample-box img{width:100%;height:auto}
+.sample-cap{padding:12px 16px;background:var(--pale);font-size:13.5px;color:var(--sub)}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.dl a{border:1.5px solid var(--navy);color:var(--navy);border-radius:999px;padding:11px 18px;font-size:13.5px;font-weight:700;background:#fff;max-width:100%}
+@media(max-width:640px){.dl{display:block;margin-top:14px}.dl a{display:block;width:100%;text-align:center;margin-top:10px;padding:13px 12px;overflow-wrap:anywhere}.dl a:first-child{margin-top:0}}
+.dl a:hover{background:var(--navy);color:#fff}
+.note{font-size:13.5px;color:var(--sub);margin-top:10px}
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.steps::before{content:'';position:absolute;top:17px;left:12%;right:12%;height:2px;background:var(--pale-blue)}
+.step{background:transparent;border:none;padding:0 8px}
+.step .n{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;font-weight:900;margin:0 auto 12px}
+.step h3{font-size:16.5px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.step p{font-size:15px;color:var(--ink)}
+@media(max-width:900px){
+.steps{grid-template-columns:1fr;gap:26px}
+.steps::before{top:17px;bottom:17px;left:17px;right:auto;width:2px;height:auto}
+.step{display:flex;gap:16px;padding:0}
+.step .n{flex:0 0 34px;margin:0}
+.step .tx{flex:1}
+}
+table.price{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;font-size:15px}
+table.price th{background:var(--navy);color:#fff;text-align:left;padding:14px 16px;font-weight:700}
+table.price td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+table.price tr:last-child td{border-bottom:none}
+table.price td.fee-cell{font-weight:700;color:var(--navy);white-space:nowrap}
+@media(max-width:640px){table.price td.fee-cell{white-space:normal}}
+.svc-cta{display:inline-block;margin-top:18px;border:1.5px solid var(--orange);color:#9A5603;border-radius:999px;padding:9px 18px;font-size:14px;font-weight:700;background:var(--orange-pale)}
+footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;font-size:13.5px;color:var(--sub)}
+.foot-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.method{background:var(--navy);color:#fff;border-radius:18px;padding:34px}
+.method h3{font-size:20px;font-weight:900;margin-bottom:12px}
+.method p{font-size:15px;color:#DCE5F2}
+.method p b{color:#fff}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap head-in">
+    <div class="logo"><a href="index.html" style="color:inherit">LPアトリエ<span>ハマ</span></a></div>
+    <nav class="main">
+      <a href="index.html#services">サービス</a>
+      <a href="index.html#flow">進め方</a>
+      <a href="index.html#price">料金の目安</a>
+      <a href="index.html#about">事業者情報</a>
+      <a class="head-cta" href="index.html#contact">問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="kicker">追加プラン｜統計解析</span>
+    <h1>売上を分けている要因の特定と、<br>まず動かす項目の提示</h1>
+    <p class="lead">売上や受注のデータを、統計の手法で読み解く分析です。数字を分けている要因を特定し、そのうち自社で動かせるものだけを残して、「まず動かす項目」として順位をつけてお渡しします。月次の定型事務をご利用の先への、追加のプランです。</p>
+    <div class="hero-cta">
+      <a class="btn btn-orange" href="index.html#contact">問い合わせる</a>
+      <a class="btn btn-ghost" href="#sample">見本レポートを見る</a>
+      <a class="btn btn-ghost" href="#fee">料金</a>
+    </div>
+  </div>
+</div>
+
+<section>
+<div class="wrap">
+<div class="sec-head">
+<span class="chip">進め方</span>
+<h2>目的の数字から、まず動かす項目まで</h2>
+<p>分析は、感覚ではなく数字の根拠で打ち手を決めるための工程です。要因の発見から効果の測定までを、4つの段で進めます。</p>
+</div>
+<div class="steps">
+<div class="step">
+<span class="n">1</span>
+<div class="tx"><h3>目的の数字の固定</h3>
+<p>最初に、動かしたい数字（受注率や売上金額など）を1つに固定します。数字の定義と、対象の範囲・期間もここで決めます。</p></div>
+</div>
+<div class="step">
+<span class="n">2</span>
+<div class="tx"><h3>要因の洗い出し</h3>
+<p>目的の数字と一緒に増減する要素を、統計の手法で洗い出します。要因ごとに、効きの強さと確からしさを併記します。</p></div>
+</div>
+<div class="step">
+<span class="n">3</span>
+<div class="tx"><h3>動かせる項目への絞り込み</h3>
+<p>効きが強くても、自社で動かせない要因は打ち手になりません。動かせる要因だけを残し、同じ分解を繰り返して、最初に動かす項目まで落とします。</p></div>
+</div>
+<div class="step">
+<span class="n">4</span>
+<div class="tx"><h3>打ち手と効果の測定</h3>
+<p>動かす項目への打ち手と、効果を測る数字・時期を決めます。打ち手の後は、施策の前後を同じ定義で数え直し、変化を確かめます。</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="alt">
+<div class="wrap">
+<div class="sec-head">
+<span class="chip">届くもの</span>
+<h2>分析レポートの構成</h2>
+</div>
+<div class="detail">
+<div class="detail-cols">
+<div>
+<h4>レポートに含まれる内容</h4>
+<ul>
+<li>目的の数字と、定義・対象件数・期間の明記</li>
+<li>切り口別の集計表（数字の姿の確認）</li>
+<li>要因の一覧と、効きの強さ・確からしさの格付け</li>
+<li>まず動かす項目（動かせる要因への絞り込みの結果）</li>
+<li>次の一手（打ち手・確認する数字・確認の時期）</li>
+<li>留保（断定しない範囲と、その理由）</li>
+</ul>
+<h4>報告の約束</h4>
+<p>「一緒に動いている」ことと「原因である」ことは、分けて報告します。因果の断定はしません。件数が少ない切り口は「傾向」として報告します。効果の保証はしません。</p>
+</div>
+<div>
+<h4>向いている課題の例</h4>
+<ul>
+<li>受注率が担当や経路でばらつく理由の特定</li>
+<li>提案までの早さと受注の関係の確認</li>
+<li>値引きや条件の違いが受注に効いているかの切り分け</li>
+<li>施策の前後での変化の測定（同じ定義での数え直し）</li>
+</ul>
+<h4>納品形式</h4>
+<p>分析レポートはPDF、集計表はExcelでお渡しします。数字の定義と対象の件数は、レポート内に明記します。</p>
+</div>
+</div>
+</div>
+<div class="method">
+<h3>手法の根拠</h3>
+<p>進め方は、統計解析の定石に沿います。まず<b>目的変数</b>（受注の有無・売上金額などの、動かしたい数字）を固定し、<b>ロジスティック回帰分析</b>（結果が二つに分かれる数字向け）と<b>重回帰分析</b>（金額などの連続した数字向け）で要因を検定します。影響が強く、かつ自社で動かせる要因だけを<b>指標</b>として残し、同じ分解を繰り返して、まず動かす項目まで落とします。用語の説明だけでなく、この進め方そのものが分析の品質の根拠です。</p>
+</div>
+</div>
+</section>
+
+<section id="fee">
+<div class="wrap">
+<div class="sec-head">
+<span class="chip">料金</span>
+<h2>単発の分析と、伴走の2段</h2>
+</div>
+<table class="price">
+<tr><th>形</th><th>料金</th><th>内容</th></tr>
+<tr><td>単発の分析</td><td class="fee-cell">50,000円（税抜）固定</td><td>対象データの分析レポート一式。決着した商談の記録（数百件規模が目安）を対象に、要因の特定から「まず動かす項目」までを1回でお渡しします。データの状態により対象範囲が変わる場合は、開始前に範囲と料金を固定します。</td></tr>
+<tr><td>伴走</td><td class="fee-cell">月額（内容に応じて見積り）</td><td>打ち手の効果の測定と、次の分析の繰り返し。月次の定型事務と合わせて、数字の確認を毎月の型に組み込む形も可能です。</td></tr>
+<tr><td>データ収集からの伴走</td><td class="fee-cell">月額（内容に応じて見積り）</td><td>分析に使える記録が無い先向け。対象は営業・販売活動の記録（商談の経路、接触の回数、受注の結果など）で、記録の形の設計と、蓄積の進め方の支援までが範囲です。分析そのものは、記録が判定に足る量までたまった段階で、単発の分析として別途ご案内します。</td></tr>
+</table>
+<p class="note">※ 金額はすべて税抜です。請求は表示に消費税を加えた金額になります。</p>
+</div>
+</section>
+
+<section class="alt" id="sample">
+<div class="wrap">
+<div class="sec-head">
+<span class="chip">見本</span>
+<h2>分析レポートの見本</h2>
+<p>架空の卸売業の営業データ（決着した商談264件）を使った、分析レポートの実物です。定義と件数の置き方、留保の書き方まで含めて、納品物の姿をご確認ください。</p>
+</div>
+<div class="dl">
+<a href="samples/statistics-report.pdf" download>見本：統計解析レポート（PDF）</a>
+<a href="index.html#svc-analysis">集計・分析レポート（サービス08）へ</a>
+</div>
+<p class="note">※ 見本は架空データによるサンプルです。実在の企業のデータではありません。</p>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<div class="sec-head">
+<span class="chip">担当</span>
+<h2>担当の実績と学び</h2>
+</div>
+<div class="detail">
+<p style="margin-bottom:14px">担当：速水 亮</p>
+<p>大手人材企業（株式会社リクルート）の事業企画で、営業データの統計解析を軸にした事業推進を担当しました。売上を分けている要因の特定と、打ち手の優先順位づけが専門です。学びは統計学で、東京理科大学 理学部 数理情報科学科を卒業し、東京工業大学大学院 社会理工学研究科 人間行動システム専攻で修士課程を修了しています。</p>
+<p style="margin-top:18px"><a class="svc-cta" href="index.html#contact">統計解析について問い合わせる</a></p>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="wrap foot-in">
+<div>LPアトリエハマ｜担当 速水 亮｜<a href="terms.html">取引条件</a>｜<a href="index.html">トップへ戻る</a>｜最終更新：2026年11月</div>
+<div>© 2026 LPアトリエハマ</div>
+</div>
+</footer>
+</body>
+</html>
