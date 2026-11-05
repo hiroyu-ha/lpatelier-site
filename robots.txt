@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hiroyu-ha.github.io/lpatelier-site/sitemap.xml
