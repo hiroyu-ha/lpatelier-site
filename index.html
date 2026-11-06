@@ -21,7 +21,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
 <style>
 :root{
   --navy:#1A2B4A; --navy2:#24365E; --orange:#E8820C; --orange-pale:#FDF2E6;
@@ -30,7 +30,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--ink);background:#fff;line-height:1.75;font-size:16px}
+body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--ink);background:#fff;line-height:1.8;font-size:16px}
 a{color:var(--navy);text-decoration:none}
 img{max-width:100%;display:block}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
@@ -166,6 +166,37 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
 .news-list li:last-child{border-bottom:none}
 .news-list .d{color:var(--orange);font-weight:700;margin-right:14px;white-space:nowrap}
 #formErr{display:none;color:#FFD9A8;font-size:14px;font-weight:700}
+
+/* typography 2026-11-06: 見出しは明朝、階層と色の絞り込み */
+.hero h1,.sec-head h2,.detail h3,.story h3,.contact-box h3,.logo{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+.hero h1{line-height:1.35}
+.sec-head h2{line-height:1.4}
+.hero .kicker{background:transparent;border:1.5px solid rgba(255,255,255,.65);color:#fff}
+.strength .st-t::before{background:#DCE5F2}
+.scard .no{color:var(--navy)}
+.price-chip{background:var(--pale-blue);color:var(--navy);font-size:14px;font-weight:900}
+.detail h4{border-left-color:var(--navy)}
+.detail li::before{background:var(--navy)}
+.faq-item h3::before{color:var(--navy)}
+.news-list .d{color:var(--navy)}
+.aud-card{border-top-color:var(--navy)}
+.aud-card .go::after,.scard .more::after{color:var(--navy)}
+.fee b{font-size:16.5px}
+.hero .cond{margin-top:16px;font-size:13.5px;color:#DCE5F2}
+.trust{background:var(--pale);border-bottom:1px solid var(--line);padding:26px 0}
+.trust-in{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.trust .t{font-size:14.5px;color:var(--ink);padding-left:14px;border-left:3px solid var(--navy)}
+.trust .t b{color:var(--navy)}
+@media(max-width:820px){.trust-in{grid-template-columns:1fr}.hero{padding:46px 0 42px}.strengths{margin-top:30px}}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:980px){.price-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.price-grid{grid-template-columns:1fr}}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+.pcard h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;font-family:"Noto Sans JP",sans-serif}
+.pcard .amt{font-size:21px;font-weight:900;color:var(--navy);margin-bottom:8px}
+.pcard .go{font-size:14px;font-weight:700;color:var(--navy)}
+.pcard .go::after{content:" →";color:var(--orange)}
+.form-embed{width:100%;height:1060px;border:0;border-radius:12px;background:#fff}
 </style>
 </head>
 <body>
@@ -187,13 +218,14 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
 <div class="hero">
   <div class="wrap">
     <span class="kicker">LPアトリエハマ 公式サイト</span>
-    <h1>毎月の定型事務とデータ仕事を、<br>検算できる形で引き受ける代行</h1>
-    <p class="lead">給与計算の補助、経費精算の集計、勤怠集計、会計データの整形など、毎月繰り返す事務作業の代行と、売上データの集計・分析の支援を行っています。納品はExcelやPDFなど、御社で検算と最終判断ができる形式です。</p>
+    <h1>月末の給与・経費・勤怠の集計に追われる<br>中小企業と士業事務所のための、定型事務の代行</h1>
+    <p class="lead">給与計算の補助、経費精算の集計、勤怠集計、会計データの整形など、毎月繰り返す事務作業の代行と、売上データの集計・分析の支援を行っています。料金は月10,000円（税抜）から。納品はExcelやPDFなど、御社で検算と最終判断ができる形式です。</p>
     <div class="hero-cta">
-      <a class="btn btn-orange" href="#contact">問い合わせる</a>
+      <a class="btn btn-orange" href="#contact">無料で見本と試算を受け取る</a>
       <a class="btn btn-ghost" href="#services">サービスと見本を見る</a>
       <a class="btn btn-ghost" href="#price">料金の目安</a>
     </div>
+    <p class="cond">提示までは費用なし／初回は実データで確認／合わなければ初回分で終了可</p>
     <div class="strengths">
       <div class="strength">
         <div class="st-t">検算できる納品形式</div>
@@ -208,6 +240,14 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
         <p>初回は前月分などの実データで同じ形の納品物を作り、内容を確認いただいてから月次の継続に移ります。</p>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="t"><b>担当の経歴</b>：大手人材企業で事業企画リーダーを務め、営業データの統計解析を率いてきた担当が対応</div>
+    <div class="t"><b>2020年4月</b>：事業開始。月次の定型事務の代行と、データ集計・分析の支援</div>
+    <div class="t"><b>範囲と料金</b>：含まれる作業の範囲と料金は、開始前に固定</div>
   </div>
 </div>
 
@@ -340,10 +380,9 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
             <a href="samples/payroll-payslip.pdf" download>見本：給与明細と確認用一覧（PDF）</a>
             <a href="samples/payroll-deliverable.xlsx" download>見本：納品Excel</a>
           </div>
-          <p class="note">※ 見本はすべて架空データによるサンプルです。</p>
-        </div>
+                  </div>
       </div>
-    <p><a class="svc-cta" href="#contact" data-svc="給与計算サポート">このサービスについて問い合わせる</a></p>
+    <p><a class="svc-cta" href="#contact" data-svc="給与計算サポート">無料で見本と試算を受け取る</a></p>
 </div>
 
     <div class="detail" id="svc-expense">
@@ -372,10 +411,9 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
             <a href="samples/expense-onepager.pdf" download>見本：納品イメージ（PDF）</a>
             <a href="samples/expense-summary.xlsx" download>見本：集計と例外の一覧（Excel）</a>
           </div>
-          <p class="note">※ 見本はすべて架空データによるサンプルです。</p>
-        </div>
+                  </div>
       </div>
-    <p><a class="svc-cta" href="#contact" data-svc="経費精算・請求処理">このサービスについて問い合わせる</a></p>
+    <p><a class="svc-cta" href="#contact" data-svc="経費精算・請求処理">無料で見本と試算を受け取る</a></p>
 </div>
 
     <div class="detail" id="svc-attendance">
@@ -404,10 +442,9 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
             <a href="samples/attendance-summary.pdf" download>見本：確認用一覧（PDF）</a>
             <a href="samples/attendance-summary.xlsx" download>見本：確認用一覧（Excel）</a>
           </div>
-          <p class="note">※ 見本はすべて架空データによるサンプルです。</p>
-        </div>
+                  </div>
       </div>
-    <p><a class="svc-cta" href="#contact" data-svc="勤怠・シフト集計">このサービスについて問い合わせる</a></p>
+    <p><a class="svc-cta" href="#contact" data-svc="勤怠・シフト集計">無料で見本と試算を受け取る</a></p>
 </div>
 
     <div class="detail" id="svc-accounting">
@@ -438,10 +475,9 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
             <a href="samples/accounting-guide.pdf" download>見本：構成と価格（PDF）</a>
             <a href="samples/accounting-journal.xlsx" download>見本：仕訳一覧・証憑一覧（Excel）</a>
           </div>
-          <p class="note">※ 見本はすべて架空データによるサンプルです。</p>
-        </div>
+                  </div>
       </div>
-    <p><a class="svc-cta" href="#contact" data-svc="会計データ整形">このサービスについて問い合わせる</a></p>
+    <p><a class="svc-cta" href="#contact" data-svc="会計データ整形">無料で見本と試算を受け取る</a></p>
 </div>
 
 <div class="detail" id="svc-ec">
@@ -472,10 +508,9 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
 <a href="samples/ec-orders.xlsx" download>見本：受注集計と在庫一覧（Excel）</a>
 <a href="samples/ec-cleanup.xlsx" download>見本：商品データ整形の対照表（Excel）</a>
 </div>
-<p class="note">※ 見本はすべて架空データによるサンプルです。</p>
 </div>
 </div>
-<p><a class="svc-cta" href="#contact" data-svc="EC運営サポート">このサービスについて問い合わせる</a></p>
+<p><a class="svc-cta" href="#contact" data-svc="EC運営サポート">無料で見本と試算を受け取る</a></p>
 </div>
 
 <div class="detail" id="svc-data">
@@ -511,10 +546,9 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
 <a href="samples/report-onepager.pdf" download>見本：集計レポート（PDF）</a>
 <a href="samples/report-excel.xlsx" download>見本：集計Excel</a>
 </div>
-<p class="note">※ 見本はすべて架空データによるサンプルです。</p>
 </div>
 </div>
-<p><a class="svc-cta" href="#contact" data-svc="データ集計・整形と自動化">このサービスについて問い合わせる</a></p>
+<p><a class="svc-cta" href="#contact" data-svc="データ集計・整形と自動化">無料で見本と試算を受け取る</a></p>
 </div>
 
 <div class="detail" id="svc-lp">
@@ -540,7 +574,7 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
 <p>静的サイト一式（HTML/CSS）でお渡しします。公開先の設定は、ご希望に応じて相談のうえで進めます。</p>
 </div>
 </div>
-<p><a class="svc-cta" href="#contact" data-svc="LP・ホームページ制作">このサービスについて問い合わせる</a></p>
+<p><a class="svc-cta" href="#contact" data-svc="LP・ホームページ制作">無料で見本と試算を受け取る</a></p>
 </div>
 
 <div class="detail" id="svc-analysis">
@@ -574,16 +608,37 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
 <div class="dl">
 <a href="samples/statistics-report.pdf" download>見本：統計解析レポート（PDF）</a>
 </div>
-<p class="note">※ 見本はすべて架空データによるサンプルです。</p>
 </div>
 </div>
-<p><a class="svc-cta" href="#contact" data-svc="営業データの集計・分析レポート">このサービスについて問い合わせる</a></p>
+<p><a class="svc-cta" href="#contact" data-svc="営業データの集計・分析レポート">無料で見本と試算を受け取る</a></p>
 </div>
 
 </div>
 </section>
 
-<section id="flow">
+<section id="price">
+<div class="wrap">
+<div class="sec-head">
+<span class="chip">料金</span>
+<h2>料金の目安の一覧</h2>
+<p>金額はすべて税抜です。範囲を超える場合の扱いは、開始前に明示します。</p>
+</div>
+<div class="price-grid">
+<div class="pcard"><h3>給与計算サポート</h3><div class="amt">月10,000円（税抜）〜</div><a class="go" href="#svc-payroll">詳細を見る</a></div>
+<div class="pcard"><h3>経費精算・請求処理</h3><div class="amt">月10,000円（税抜）定額</div><a class="go" href="#svc-expense">詳細を見る</a></div>
+<div class="pcard"><h3>勤怠・シフト集計</h3><div class="amt">月10,000円（税抜）〜</div><a class="go" href="#svc-attendance">詳細を見る</a></div>
+<div class="pcard"><h3>会計データ整形</h3><div class="amt">月10,000円（税抜）〜</div><a class="go" href="#svc-accounting">詳細を見る</a></div>
+<div class="pcard"><h3>EC運営サポート</h3><div class="amt">お試し3,300円（税抜）／月次10,000円（税抜）</div><a class="go" href="#svc-ec">詳細を見る</a></div>
+<div class="pcard"><h3>データ集計・整形と自動化</h3><div class="amt">月次集計レポート 月10,000円（税抜）</div><a class="go" href="#svc-data">詳細を見る</a></div>
+<div class="pcard"><h3>LP・ホームページ制作</h3><div class="amt">制作費5万円（税抜）〜</div><a class="go" href="#svc-lp">詳細を見る</a></div>
+<div class="pcard"><h3>営業データの集計・分析レポート</h3><div class="amt">見積り</div><a class="go" href="#svc-analysis">詳細を見る</a></div>
+<div class="pcard"><h3>統計解析</h3><div class="amt">単発 50,000円（税抜）</div><a class="go" href="statistics.html">詳細を見る</a></div>
+</div>
+<p class="note">※ 料金は作業の代行の対価です。検算と最終判断は先方でお願いする形のため、その分を抑えた水準にしています。範囲・件数の上限などの条件は、各サービスの詳細に記載しています。</p>
+</div>
+</section>
+
+<section class="alt" id="flow">
 <div class="wrap">
 <div class="sec-head">
 <span class="chip">流れ</span>
@@ -620,34 +675,12 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
 </div>
 </div>
 <div class="flow-cta">
-<a class="btn btn-orange" href="#contact">問い合わせる</a>
-<p class="note">返信は2営業日以内を目安にしています</p>
+<a class="btn btn-orange" href="#contact">無料で見本と試算を受け取る</a>
+<p class="note">提示までは費用なし／返信は2営業日以内を目安にしています</p>
 </div>
 </div>
 </section>
 
-<section class="alt" id="price">
-<div class="wrap">
-<div class="sec-head">
-<span class="chip">料金</span>
-<h2>料金の目安の一覧</h2>
-<p>金額はすべて税抜です。範囲を超える場合の扱いは、開始前に明示します。</p>
-</div>
-<table class="price">
-<tr><th>サービス</th><th>料金の目安</th><th>詳細</th></tr>
-<tr><td>給与計算サポート</td><td class="fee-cell">月10,000円（税抜）〜</td><td><a href="#svc-payroll">詳細を見る</a></td></tr>
-<tr><td>経費精算・請求処理</td><td class="fee-cell">月10,000円（税抜）定額</td><td><a href="#svc-expense">詳細を見る</a></td></tr>
-<tr><td>勤怠・シフト集計</td><td class="fee-cell">月10,000円（税抜）〜</td><td><a href="#svc-attendance">詳細を見る</a></td></tr>
-<tr><td>会計データ整形</td><td class="fee-cell">月10,000円（税抜）〜</td><td><a href="#svc-accounting">詳細を見る</a></td></tr>
-<tr><td>EC運営サポート</td><td class="fee-cell">お試し3,300円（税抜）／月次10,000円（税抜）</td><td><a href="#svc-ec">詳細を見る</a></td></tr>
-<tr><td>データ集計・整形と自動化</td><td class="fee-cell">月次集計レポート 月10,000円（税抜）／自動化 見積り</td><td><a href="#svc-data">詳細を見る</a></td></tr>
-<tr><td>LP・ホームページ制作</td><td class="fee-cell">制作費5万円（税抜）〜</td><td><a href="#svc-lp">詳細を見る</a></td></tr>
-<tr><td>営業データの集計・分析レポート</td><td class="fee-cell">見積り</td><td><a href="#svc-analysis">詳細を見る</a></td></tr>
-<tr><td>統計解析</td><td class="fee-cell">単発 50,000円（税抜）</td><td><a href="statistics.html">詳細を見る</a></td></tr>
-</table>
-<p class="note">※ 料金は作業の代行の対価です。検算と最終判断は先方でお願いする形のため、その分を抑えた水準にしています。範囲・件数の上限などの条件は、各サービスの詳細に記載しています。</p>
-</div>
-</section>
 
 <section id="data">
 <div class="wrap">
@@ -730,10 +763,8 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
 </table>
 <div class="story">
 <h3>なぜ「atorie」と綴るのか</h3>
-<p>アトリエの正しい綴りは、フランス語の atelier です。私たちは、その綴りをあえて捨てました。</p>
-<p>私たちは、読みやすさを重視しました。名前は、見た瞬間に読めて、そのまま入力できること。格好のつく綴りより、迷わせない綴りを選びました。</p>
-<p>atorie は、「アトリエ」の読みそのままの綴りです。</p>
-<p>アトリエとは、工房のことです。工房は既製品を作りません。相手に合わせて、一つひとつ仕上げます。私たちの材料は数字です。一社の数字を読み、その会社に合う形に仕上げる。その仕事ぶりを、屋号に込めました。</p>
+<p>アトリエの正しい綴りは、フランス語の atelier。あえて、読みそのままの atorie にしました。名前は、見た瞬間に読めて、そのまま入力できること。格好のつく綴りより、迷わせない綴りを選びました。</p>
+<p>アトリエとは工房のこと。工房は既製品を作りません。一社の数字を読み、その会社に合う形に、一つひとつ仕上げます。その仕事ぶりを、屋号に込めました。</p>
 <p class="story-last">綴りは、読みやすく。仕事は、細かく。</p>
 </div>
 </div>
