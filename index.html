@@ -198,6 +198,14 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
 .pcard .go::after{content:" →";color:var(--orange)}
 .form-embed{width:100%;height:1060px;border:0;border-radius:12px;background:#fff}
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBXRZX7ZNV"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VBXRZX7ZNV');
+</script>
 </head>
 <body>
 <header>
@@ -776,33 +784,8 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
 <h3>問い合わせ</h3>
 <p>対象の作業と、現在のお困りごとをお知らせください。2営業日以内を目安に、見本と試算、範囲と料金の提示で返信します。</p>
 <span class="mail">lpatorieham@gmail.com</span>
-<form class="mail-form" id="mailForm">
-<div>
-<label for="f-service">対象のサービス</label>
-<select id="f-service">
-<option>給与計算サポート</option>
-<option>経費精算・請求処理</option>
-<option>勤怠・シフト集計</option>
-<option>会計データ整形</option>
-<option>EC運営サポート</option>
-<option>データ集計・整形と自動化</option>
-<option>LP・ホームページ制作</option>
-<option>営業データの集計・分析レポート</option>
-<option>その他・未定</option>
-</select>
-</div>
-<div>
-<label for="f-company">会社名・事務所名</label>
-<input id="f-company" type="text" placeholder="例：株式会社〇〇">
-</div>
-<div>
-<label for="f-body">お困りごと・対象の作業</label>
-<textarea id="f-body" rows="5" placeholder="例：毎月の経費集計に手が取られています。件数は月に80件ほどです。"></textarea>
-</div>
-<button type="submit">メールを作成する</button>
-<p id="formErr">会社名と、お困りごとの内容をご記入ください</p>
-        <p style="font-size:13.5px;color:#B9C6DC">ボタンを押すと、お使いのメールアプリが開き、入力内容が入った状態になります。あとは送信を押すだけです。メールアプリが開かない場合は、lpatorieham@gmail.com へ直接お送りください。</p>
-</form>
+<iframe class="form-embed" id="gform" src="https://docs.google.com/forms/d/e/1FAIpQLScz9OxqcWWPmOH9FrlfEaF7HVdNv_E4qiyf0BGlGwYjp6kz0g/viewform?embedded=true" title="LPアトリエハマ お問い合わせフォーム"></iframe>
+<p style="font-size:13.5px;color:#B9C6DC;margin-top:14px">フォームがうまく開かない場合は、lpatorieham@gmail.com へ直接メールでお送りください。</p>
 </div>
 </div>
 </section>
@@ -815,22 +798,21 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
 </footer>
 
 <script>
-document.getElementById('mailForm').addEventListener('submit', function(e){
-e.preventDefault();
-var svc = document.getElementById('f-service').value;
-var comp = document.getElementById('f-company').value;
-var body = document.getElementById('f-body').value;
-var err = document.getElementById('formErr');
-if(!comp.trim() || !body.trim()){ err.style.display='block'; return; }
-err.style.display='none';
-var subject = '' + svc;
-var text = '会社名・事務所名：' + comp + '\n対象のサービス：' + svc + '\n\nお困りごと・対象の作業：\n' + body + '\n';
-window.location.href = 'mailto:lpatorieham@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
-});
+var SVC_MAP = {
+'給与計算サポート': '給与計算サポート',
+'経費精算・請求処理': '経費・請求処理',
+'勤怠・シフト集計': '勤怠・シフト集計',
+'会計データ整形': '会計データ整形',
+'EC運営サポート': 'EC運営サポート',
+'データ集計・整形と自動化': 'データ集計・整形・自動化',
+'LP・ホームページ制作': 'その他・未定',
+'営業データの集計・分析レポート': '集計レポート'
+};
 document.querySelectorAll('.svc-cta').forEach(function(a){
   a.addEventListener('click', function(){
-    var sel = document.getElementById('f-service');
-    if(sel){ sel.value = a.getAttribute('data-svc'); }
+    var f = document.getElementById('gform');
+    var v = SVC_MAP[a.getAttribute('data-svc')];
+    if(f && v){ f.src = 'https://docs.google.com/forms/d/e/1FAIpQLScz9OxqcWWPmOH9FrlfEaF7HVdNv_E4qiyf0BGlGwYjp6kz0g/viewform?embedded=true&entry.1937509457=' + encodeURIComponent(v); }
   });
 });
 </script>
