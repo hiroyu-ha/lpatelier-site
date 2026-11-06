@@ -193,6 +193,12 @@ footer{background:var(--pale);border-top:1px solid var(--line);padding:34px 0;fo
 .pcard .go{font-size:14px;font-weight:700;color:var(--navy)}
 .pcard .go::after{content:" →";color:var(--orange)}
 .form-embed{width:100%;height:1060px;border:0;border-radius:12px;background:#fff}
+/* 2026-11-06 残件：着地余白・SP目次帯・フッターナビ */
+.detail,section#contact,section#news{scroll-margin-top:76px}
+.sp-toc{display:none}
+@media(max-width:820px){.sp-toc{display:block;background:#fff;border-bottom:1px solid var(--line);padding:12px 0}.sp-toc .wrap{display:flex;flex-wrap:wrap;gap:6px 20px}.sp-toc a{font-size:13.5px;font-weight:700;color:var(--navy)}}
+.foot-nav{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:16px}
+.foot-nav a{color:var(--navy);font-weight:700}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBXRZX7ZNV"></script>
@@ -254,6 +260,10 @@ gtag('config', 'G-VBXRZX7ZNV');
     <div class="t"><b>範囲と料金</b>：含まれる作業の範囲と料金は、開始前に固定</div>
   </div>
 </div>
+
+<nav class="sp-toc"><div class="wrap">
+<a href="#services">サービス</a><a href="#flow">進め方</a><a href="#price">料金の目安</a><a href="#data">データの取り扱い</a><a href="#faq">よくある質問</a><a href="#about">事業者情報</a>
+</div></nav>
 
 <section id="services">
   <div class="wrap">
@@ -377,10 +387,10 @@ gtag('config', 'G-VBXRZX7ZNV');
           <h4>見本</h4>
           <div class="sample-box">
             <img src="assets/payroll-onpager.webp" width="1000" height="2850" loading="lazy" decoding="async" alt="給与計算の提案と見本の1枚もの（サンプル）">
-            <div class="sample-cap">見本：給与計算の進め方と見本の1枚もの（架空データ）</div>
+            <div class="sample-cap">見本：給与計算の進め方と見本の1枚もの（架空データ）。細部はPDF版で拡大してご覧ください。</div>
           </div>
           <div class="dl">
-            <a href="samples/payroll-guide.pdf" download>見本：進め方と金額（PDF）</a>
+            <a href="samples/payroll-guide.pdf" download>見本：進め方と金額（PDF・画像の拡大版）</a>
             <a href="samples/payroll-payslip.pdf" download>見本：給与明細と確認用一覧（PDF）</a>
             <a href="samples/payroll-deliverable.xlsx" download>見本：納品Excel</a>
           </div>
@@ -473,7 +483,7 @@ gtag('config', 'G-VBXRZX7ZNV');
           <h4>見本</h4>
           <div class="sample-box">
             <img src="assets/accounting-onepager.webp" width="1000" height="1415" loading="lazy" decoding="async" alt="会計データ整形の1枚もの（サンプル）">
-            <div class="sample-cap">見本：会計データ整形の進め方と構成（架空データ）</div>
+            <div class="sample-cap">見本：会計データ整形の進め方と構成（架空データ）。構成と価格の詳細は、PDF版をご覧ください。</div>
           </div>
           <div class="dl">
             <a href="samples/accounting-guide.pdf" download>見本：構成と価格（PDF）</a>
@@ -504,10 +514,10 @@ gtag('config', 'G-VBXRZX7ZNV');
 <h4>見本</h4>
 <div class="sample-box">
 <img src="assets/ec-onepager.webp" width="1000" height="1513" loading="lazy" decoding="async" alt="EC運営サポートの提案用1枚もの（サンプル）">
-<div class="sample-cap">見本：EC運営サポートの進め方（架空データ）</div>
+<div class="sample-cap">見本：EC運営サポートの進め方（架空データ）。細部はPDF版で拡大してご覧ください。</div>
 </div>
 <div class="dl">
-<a href="samples/ec-onepager.pdf" download>見本：進め方（PDF）</a>
+<a href="samples/ec-onepager.pdf" download>見本：進め方（PDF・画像の拡大版）</a>
 <a href="samples/ec-onepager.xlsx" download>見本：進め方（Excel）</a>
 <a href="samples/ec-orders.xlsx" download>見本：受注集計と在庫一覧（Excel）</a>
 <a href="samples/ec-cleanup.xlsx" download>見本：商品データ整形の対照表（Excel）</a>
@@ -540,14 +550,14 @@ gtag('config', 'G-VBXRZX7ZNV');
 <h4>見本</h4>
 <div class="sample-box">
 <img src="assets/report-onepager.webp" width="1000" height="1414" loading="lazy" decoding="async" alt="月次集計レポートの1枚もの（サンプル）">
-<div class="sample-cap">見本：月次集計レポート（架空データ）</div>
+<div class="sample-cap">見本：月次集計レポート（架空データ）。細部はPDF版で拡大してご覧ください。</div>
 </div>
 <div class="sample-box" style="margin-top:16px">
 <img src="assets/automation-onepager.webp" width="1000" height="1414" loading="lazy" decoding="async" alt="定型事務の自動化の見本1枚もの（サンプル）">
 <div class="sample-cap">見本：定型事務の集計と整形（架空データ）</div>
 </div>
 <div class="dl">
-<a href="samples/report-onepager.pdf" download>見本：集計レポート（PDF）</a>
+<a href="samples/report-onepager.pdf" download>見本：集計レポート（PDF・画像の拡大版）</a>
 <a href="samples/report-excel.xlsx" download>見本：集計Excel</a>
 </div>
 </div>
@@ -569,7 +579,7 @@ gtag('config', 'G-VBXRZX7ZNV');
 <h4>制作実例としての本サイト</h4>
 <p>このサイト自体が、当方の制作物です。構成・文章・見本の載せ方まで含めて、制作の進め方の実例としてご覧ください。</p>
 <h4>料金の目安</h4>
-<div class="fee"><b>制作費 5万円〜（標準 77,000円、いずれも税抜）</b>。ページ数と内容に応じて見積ります。公開後の更新・運用の支援は別途相談です。</div>
+<div class="fee"><b>制作費5万円（税抜）〜。標準は77,000円（税抜）</b>です。標準は、構成案と文章のたたき台の用意から、確認しながらの仕上げ、静的サイト一式の納品までを含む、ランディングページまたは小規模サイト1件分の目安です。ページ数と内容に応じて見積ります。公開後の更新・運用の支援は別途相談です。</div>
 </div>
 <div>
 <h4>進め方</h4>
@@ -634,7 +644,7 @@ gtag('config', 'G-VBXRZX7ZNV');
 <div class="pcard"><h3>会計データ整形</h3><div class="amt">月10,000円（税抜）〜</div><a class="go" href="#svc-accounting">詳細を見る</a></div>
 <div class="pcard"><h3>EC運営サポート</h3><div class="amt">お試し3,300円（税抜）／月次10,000円（税抜）</div><a class="go" href="#svc-ec">詳細を見る</a></div>
 <div class="pcard"><h3>データ集計・整形と自動化</h3><div class="amt">月次集計レポート 月10,000円（税抜）</div><a class="go" href="#svc-data">詳細を見る</a></div>
-<div class="pcard"><h3>LP・ホームページ制作</h3><div class="amt">制作費5万円（税抜）〜</div><a class="go" href="#svc-lp">詳細を見る</a></div>
+<div class="pcard"><h3>LP・ホームページ制作</h3><div class="amt">標準 77,000円（税抜）／5万円〜</div><a class="go" href="#svc-lp">詳細を見る</a></div>
 <div class="pcard"><h3>営業データの集計・分析レポート</h3><div class="amt">見積り</div><a class="go" href="#svc-analysis">詳細を見る</a></div>
 <div class="pcard"><h3>統計解析</h3><div class="amt">単発 50,000円（税抜）</div><a class="go" href="statistics.html">詳細を見る</a></div>
 </div>
@@ -787,6 +797,9 @@ gtag('config', 'G-VBXRZX7ZNV');
 </section>
 
 <footer>
+<div class="wrap"><nav class="foot-nav">
+<a href="#services">サービス</a><a href="#flow">進め方</a><a href="#price">料金の目安</a><a href="#data">データの取り扱い</a><a href="#faq">よくある質問</a><a href="#about">事業者情報</a><a href="#contact">問い合わせ</a><a href="terms.html">取引条件</a>
+</nav></div>
 <div class="wrap foot-in">
 <div>LPアトリエハマ｜担当 速水 亮｜<a href="terms.html">取引条件</a>｜最終更新：2026年11月</div>
 <div>© 2026 LPアトリエハマ</div>
